@@ -18,6 +18,7 @@ const commentRoutes 	= require("./routes/comments"),
 	  indexRoutes 		= require("./routes/index");
 
 // seedDB(); //seed the database
+app.set('port', process.env.PORT || 8080);
 //mongodb+srv://emi:<password>@cluster0-tl8gt.mongodb.net/test?retryWrites=true&w=majority
 // mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true});
 mongoose.connect("mongodb+srv://emi:emil123@cluster0-tl8gt.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
@@ -51,6 +52,6 @@ app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments/",commentRoutes);
 
-app.listen(3001, () => {
+app.listen(app.get('port'), process.env.IP , () => {
 	console.log('YelpCamp server is up.');
 });
