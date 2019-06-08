@@ -5,12 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	  "start": "node app.js"
+    "start": "node app.js"
   },
   "author": "Hector Ledesma",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
     "express-session": "^1.16.1",
