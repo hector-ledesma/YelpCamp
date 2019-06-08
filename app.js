@@ -19,9 +19,11 @@ const commentRoutes 	= require("./routes/comments"),
 
 // seedDB(); //seed the database
 app.set('port', process.env.PORT || 8080);
-//mongodb+srv://emi:<password>@cluster0-tl8gt.mongodb.net/test?retryWrites=true&w=majority
+
 // mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true});
-mongoose.connect("mongodb+srv://emi:emil123@cluster0-tl8gt.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
+// console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://emi:emil123@cluster0-tl8gt.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 app.use(bodyparser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
@@ -50,8 +52,11 @@ app.use((req, res, next) => {
 
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments/",commentRoutes);
+app.use("/campgrounds/:id/comments/", commentRoutes);
 
-app.listen(app.get('port'), process.env.IP , () => {
+// app.listen(app.get('port'), process.env.IP , () => {
+// 	console.log('YelpCamp server is up.');
+// });
+app.listen(3001, process.env.IP , () => {
 	console.log('YelpCamp server is up.');
 });
