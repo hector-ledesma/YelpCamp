@@ -20,8 +20,10 @@ const commentRoutes 	= require("./routes/comments"),
 // seedDB(); //seed the database
 //Network
 app.set('port', process.env.PORT || 8080);
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+const url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp" ;
 
+mongoose.connect(url, {useNewUrlParser: true});
+console.log(process.env.DATABASEURL);
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
